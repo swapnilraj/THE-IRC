@@ -4,7 +4,7 @@ const app = express();
 app.use(express.static('./public'));
 
 
-const server = app.listen(3000, () => {
+const server = app.listen(1212, () => {
     console.log(server.address().port);
 });
 const io = require('socket.io')(server);  
