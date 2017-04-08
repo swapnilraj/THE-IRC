@@ -11,7 +11,7 @@ const getText = () => {
 }
 
 socket.on('message_received', (data) => {
-    console.log(data + "HIEU");
+    console.log(data);
 });
 /**
  * @param {Event} event
