@@ -1,19 +1,6 @@
 {
-  "name": "lordraj",
-  "version": "1.0.0",
-  "description": "",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/almos98/InterVarsity-Hackathon-2017.git"
-  },
-  "author": "me",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/almos98/InterVarsity-Hackathon-2017/issues"
-  },
-  "homepage": "https://github.com/almos98/InterVarsity-Hackathon-2017#readme"
+  "dependencies": {
+    "express": "^4.15.2",
+    "socket.io": "^1.7.3"
+  }
 }
