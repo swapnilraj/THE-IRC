@@ -33,13 +33,18 @@
         elem.style.display = '';
     }
 
-    socket.on('message_received', (data) => {
+    const setStyle = (data) => {
         let elem = document.createElement('p');
         let name = document.createElement('span');
-        name.innerHTML = data.nickname;
+        name.innerHTML = data.nickname + ': ';
         elem.innerText = data.message;
-        elem.appendChild(name);
+        elem.insertBefore(name,elem.firstChild);
         chatbox.appendChild(elem);
+    }
+
+    socket.on('message_received', (data) => {
+        setStyle(data);
+        console.log('Received message from:' + data.nickname);
     });
     /**
      * @param {Event} event
@@ -47,8 +52,10 @@
     const sendMessage = (event) => {  
         if(event.code === 'Enter') {
             let data = {'message' : getText(), 'nickname' : nickname};
-            messageBox.value = '';
-            socket.emit("user_played", data);
+            if (data.message != '') {
+                messageBox.value = '';
+                socket.emit("user_played", data);
+            }
         }
     };
 
