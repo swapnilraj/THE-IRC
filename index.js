@@ -15,7 +15,6 @@ const io = require('socket.io')(server);
  */
 io.on('connection', (socket) => {
   socket.on('user_played', (data) => {
-    console.log(data);
     socket.broadcast.emit('message_received', data)
   });
 });

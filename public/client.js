@@ -4,6 +4,8 @@
 const messageBox = document.getElementById('messageBox');
 const nicknameBox = document.getElementById('nicknameBox');
 
+let nickname;
+
 const socket = io.connect('/');
 
 const getText = () => {
@@ -17,7 +19,6 @@ const getnickname = () => {
  * @param {HTMLElement} elem 
  */
 const hideElement = (elem) => {
-    console.log(elem);
     elem.style.display = 'none';
 }
 
@@ -25,7 +26,6 @@ const hideElement = (elem) => {
  * @param {HTMLElement} elem 
  */
 const showElement = (elem) => {
-    console.log(elem);
     elem.style.display = '';
 }
 
@@ -37,7 +37,9 @@ socket.on('message_received', (data) => {
  */
 const sendMessage = (event) => {  
     if(event.code === 'Enter') {
-        socket.emit("user_played", getText());
+        let data = {'message' : getText(), 'nickname' : nickname};
+        messageBox.value = '';
+        socket.emit("user_played", data);
     }
 };
 
@@ -46,9 +48,9 @@ const sendMessage = (event) => {
  */
 const sendNickname = (event) => {
     if(event.code === 'Enter') {
-        socket.emit('send_nickname', getnickname());
-         hideElement(nicknameBox);
-         showElement(messageBox);
+        nickname = getnickname();    
+        hideElement(nicknameBox);
+        showElement(messageBox);
     }    
 }
 
