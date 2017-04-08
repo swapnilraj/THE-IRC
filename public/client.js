@@ -1,13 +1,32 @@
 /**
  * @type {HTMLInputElement}
  */
-const messageBox = document.getElementById('client_message');
-
+const messageBox = document.getElementById('messageBox');
+const nicknameBox = document.getElementById('nicknameBox');
 
 const socket = io.connect('/');
 
 const getText = () => {
     return messageBox.value;
+}
+
+const getnickname = () => {
+    return nicknameBox.value;
+}
+/**
+ * @param {HTMLElement} elem 
+ */
+const hideElement = (elem) => {
+    console.log(elem);
+    elem.style.display = 'none';
+}
+
+/**
+ * @param {HTMLElement} elem 
+ */
+const showElement = (elem) => {
+    console.log(elem);
+    elem.style.display = '';
 }
 
 socket.on('message_received', (data) => {
@@ -18,9 +37,21 @@ socket.on('message_received', (data) => {
  */
 const sendMessage = (event) => {  
     if(event.code === 'Enter') {
-        const message = getText();
-        socket.emit("user_played", message);
+        socket.emit("user_played", getText());
     }
 };
 
-['keydown'].forEach(event => messageBox.addEventListener(event, sendMessage));
+/**
+ * @param {Event} event
+ */
+const sendNickname = (event) => {
+    if(event.code === 'Enter') {
+        socket.emit('send_nickname', getnickname());
+         hideElement(nicknameBox);
+         showElement(messageBox);
+    }    
+}
+
+messageBox.addEventListener('keydown', sendMessage);
+hideElement(messageBox);
+nicknameBox.addEventListener('keydown', sendNickname);

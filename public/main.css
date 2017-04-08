@@ -5,51 +5,20 @@
     padding: 5%;
 }
 
-.row {
+.messageSender {
     display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    align-items: center;
+    height: 10%;
     width: 100%;
-    height: 50%;
+    padding: 5%;
     margin: 0 auto;
 }
 
-.score {
-    flex-grow: 1;
-}
-
-.result {
-    flex-grow: 5;
-    text-align: center
-}
-
-.hand {
-    flex-grow: 1;
-    max-width: 240px;
+#messageBox {
+    margin: 0 auto;
     text-align: center;
 }
 
-.hand p {
-    position: relative;
-    top: 100%;
+#nicknameBox {
+    margin: 0 auto;
+    text-align: center;
 }
-
-.rock {
-	background: url('img/rps.png') no-repeat -24px -170px;
-	width: 240px;
-	height: 240px;
-}
-
-.scissors {
-    background: url('img/rps.png') no-repeat -264px -180px;
-	width: 240px;
-	height: 240px;
-}
-
-.paper {
-    background: url('img/rps.png') no-repeat -520px -180px;
-	width: 240px;
-	height: 240px;
-}
-
