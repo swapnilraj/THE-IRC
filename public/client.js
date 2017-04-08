@@ -40,6 +40,13 @@
         elem.innerText = data.message;
         elem.insertBefore(name,elem.firstChild);
         chatbox.appendChild(elem);
+
+        fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=pt&dt=t&q=hi')
+        .then(function(response){
+            response.json().then(function(data){
+                console.log(data[0][0][0]);
+            });
+        });
     }
 
     socket.on('message_received', (data) => {
