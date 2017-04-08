@@ -7,7 +7,9 @@
     const messageBox = document.getElementById('messageBox');
     const nicknameBox = document.getElementById('nicknameBox');
     const chatbox = document.getElementById('chatbox');
-
+    const languageBox = document.getElementById('languageBox');
+    
+    let toLanguage;
     let nickname;
 
     const socket = io.connect('/');
@@ -18,6 +20,10 @@
 
     const getnickname = () => {
         return nicknameBox.value;
+    }
+
+    const getLanguage = () => {
+        return languageBox.value;
     }
     /**
      * @param {HTMLElement} elem 
@@ -40,17 +46,18 @@
         elem.innerText = data.message;
         elem.insertBefore(name,elem.firstChild);
         chatbox.appendChild(elem);
-
-        fetch('https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl=pt&dt=t&q=hi')
-        .then(function(response){
-            response.json().then(function(data){
-                console.log(data[0][0][0]);
-            });
-        });
     }
 
     socket.on('message_received', (data) => {
-        setStyle(data);
+        let url = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl='+toLanguage+'&dt=t&q='+ data.message;
+
+        fetch(url)
+        .then(function(response){
+            response.json().then(function(resp){
+                let temp = {'message':resp[0][0][0], 'nickname': data.nickname};
+                setStyle(temp);
+            });
+        });
         console.log('Received message from:' + data.nickname);
     });
     /**
@@ -71,8 +78,10 @@
      */
     const sendNickname = (event) => {
         if(event.code === 'Enter') {
-            nickname = getnickname();    
+            nickname = getnickname();
+            toLanguage = getLanguage();  
             hideElement(nicknameBox);
+            hideElement(languageBox);
             showElement(messageBox);
         }    
     }
@@ -80,4 +89,5 @@
     messageBox.addEventListener('keydown', sendMessage);
     hideElement(messageBox);
     nicknameBox.addEventListener('keydown', sendNickname);
+    languageBox.addEventListener('keydown', sendNickname);
 })();
