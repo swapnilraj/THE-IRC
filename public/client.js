@@ -89,6 +89,5 @@
 
     messageBox.addEventListener('keydown', sendMessage);
     hideElement(messageBox);
-    nicknameBox.addEventListener('keydown', sendNickname);
     languageBox.addEventListener('keydown', sendNickname);
 })();
