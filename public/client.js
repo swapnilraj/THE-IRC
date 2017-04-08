@@ -6,6 +6,7 @@
      */
     const messageBox = document.getElementById('messageBox');
     const nicknameBox = document.getElementById('nicknameBox');
+    const chatbox = document.getElementById('chatbox');
 
     let nickname;
 
@@ -33,7 +34,12 @@
     }
 
     socket.on('message_received', (data) => {
-        console.log(data);
+        let elem = document.createElement('p');
+        let name = document.createElement('span');
+        name.innerHTML = data.nickname;
+        elem.innerText = data.message;
+        elem.appendChild(name);
+        chatbox.appendChild(elem);
     });
     /**
      * @param {Event} event

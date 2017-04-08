@@ -5,14 +5,14 @@ body, html {
     margin: 0px;
 }
 
-.container {
+#chatbox {
     margin: 0 auto;
     padding: 5%; 
     flex-grow: 1;
     background: #292929;
 }
 
-.messageSender {
+#messageSender {
     display: flex;
     margin: 0 auto;
     flex-grow: 3; 
@@ -29,7 +29,9 @@ body, html {
     text-align: center;
 }
 
-.chatbox {
+/*#e06eeb*/
+
+.container {
     display: flex;
     flex-direction: row;
     height: 100%;
