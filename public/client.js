@@ -53,7 +53,8 @@
 
         fetch(url)
         .then(function(response){
-            response.json().then(function(resp){
+            response.json()
+            .then(function(resp){
                 let temp = {'message':resp[0][0][0], 'nickname': data.nickname};
                 setStyle(temp);
             });
