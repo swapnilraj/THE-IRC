@@ -1,24 +1,37 @@
+body, html {
+    padding: 0px;
+    height: 100%;
+    width: 100%;
+    margin: 0px;
+}
+
 .container {
-    height: 50%;
-    width: 80%;
     margin: 0 auto;
-    padding: 5%;
+    padding: 5%; 
+    flex-grow: 1;
+    background: #292929;
 }
 
 .messageSender {
     display: flex;
-    height: 10%;
-    width: 100%;
-    padding: 5%;
     margin: 0 auto;
+    flex-grow: 3; 
+    border: 3px solid #292929;
 }
 
 #messageBox {
-    margin: 0 auto;
+    margin: auto auto;
     text-align: center;
 }
 
 #nicknameBox {
-    margin: 0 auto;
+    margin: auto auto;
     text-align: center;
+}
+
+.chatbox {
+    display: flex;
+    flex-direction: row;
+    height: 100%;
+    width: 100%;
 }
