@@ -56,3 +56,17 @@ body, html {
     height: 100%;
     width: 100%;
 }
+
+@media screen and (max-width: 525px) {
+    .container {
+        flex-direction: column-reverse;
+    }
+
+    #chatbox {
+        width: 100%;
+    }
+
+    #messageSender {
+        width: 100%;
+    }
+}
