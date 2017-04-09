@@ -11,4 +11,9 @@ Chat client written using Web Sockets :heart:
 ## TODOS:
 * Currently user has to type messages in English.
 
+## Screenshot
+![Screenshot of two panes of hindi and french](./screenshots/screenshot.png)
+
+Left chose Hindi and right chose French.
+
 Brought to you by Team TCDB4CB.
