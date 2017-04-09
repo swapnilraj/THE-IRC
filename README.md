@@ -2,9 +2,9 @@
 
 ## THE IRC
 
-A proof of concept chat client, which helps you cross the barriers of different languages, made for [Intervarsity-Hackathon-2017.](https://www.facebook.com/events/765152773640478/)
+A proof of concept chat client, which helps you cross the barriers between languages, made for the [Intervarsity-Hackathon-2017.](https://www.facebook.com/events/765152773640478/) in which the project won second place.
 
-You choose your nickname and language preference at the start and from there on-wards all the messages you see will be in your preferred language.
+On selecting your nick and your language you can converse with anyone in your preferred language.
 
 ## Project Stack:
 
@@ -14,7 +14,7 @@ You choose your nickname and language preference at the start and from there on-
 
 ## TODOS:
 
-* Currently user has to type messages in English.
+* Users should be able to write in their own languages.
 
 ## Screenshot:
 
