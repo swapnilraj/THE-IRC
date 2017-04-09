@@ -193,6 +193,20 @@ zulu:'zu',
         elem.style.display = '';
     }
 
+    const notify = (data) => {
+        if(!('Notification' in window)) {
+            alert('Notifications not supported.');
+        } else if(Notification.permission === 'granted') {
+            let notification = new Notification(data.nickname + ": " + data.message);
+        } else if(Notification.permission !== 'denied') {
+            Notification.requestPermission((permission) => {
+                if(permission === 'granted') {
+                    let notification = new Notification(data.nickname + ": " + data.message);
+                }
+            });
+        }
+    }
+
     const setStyle = (data) => {
         let elem = document.createElement('p');
         let name = document.createElement('span');
@@ -211,6 +225,9 @@ zulu:'zu',
             .then(function(resp){
                 let temp = {'message':resp[0][0][0], 'nickname': data.nickname};
                 setStyle(temp);
+                if(data.nickname != nickname) {
+                    notify(temp);
+                }
             });
         });
         console.log('Received message from:' + data.nickname);
