@@ -237,7 +237,7 @@ zulu:'zu',
      * @param {Event} event
      */
     const sendMessage = (event) => {  
-        if(event.code === 'Enter') {
+        if(event.key === 'Enter') {
             let data = {'message' : getText(), 'nickname' : nickname};
             if (data.message != '') {
                 messageBox.value = '';
@@ -250,7 +250,7 @@ zulu:'zu',
      * @param {Event} event
      */
     const sendNickname = (event) => {
-        if(event.code === 'Enter') {
+        if(event.key === 'Enter') {
             nickname = getnickname();
             toLanguage = getLanguage();  
             hideElement(nicknameBox);
