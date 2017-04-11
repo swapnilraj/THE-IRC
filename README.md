@@ -2,7 +2,7 @@
 
 ## THE IRC
 
-A proof of concept chat client, which helps you cross the barriers between languages, made for the [Intervarsity-Hackathon-2017.](https://www.facebook.com/events/765152773640478/) in which the project won second place.
+A proof of concept chat client, which helps you cross the barriers between languages, made for the [Intervarsity-Hackathon-2017.](https://www.facebook.com/events/765152773640478/) in which the project won second place. A working example can be found on [jorikschellekens.com](https://www.jorikschellekens.com).
 
 On selecting your nick and your language you can converse with anyone in your preferred language.
 
