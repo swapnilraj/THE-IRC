@@ -161,7 +161,7 @@ zulu:'zu',
      */
     const messageBox = document.getElementById('messageBox');
     const nicknameBox = document.getElementById('nicknameBox');
-    const chatbox = document.getElementById('chatbox');
+    const chatbox = document.getElementById('messageDisplay');
     const languageBox = document.getElementById('languageBox');
     const nickDisplay = document.getElementById('nickDisplay');
     
