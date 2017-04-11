@@ -168,17 +168,11 @@ zulu:'zu',
     let nickname;
 
     const socket = io.connect('/');
-
-    const getText = () => {
-        return messageBox.value;
-    }
-
-    const getnickname = () => {
-        return nicknameBox.value;
-    }
-
-    const getLanguage = () => {
-        return languageBox.value;
+    /**
+     * @param {HTMLElement} elem 
+     */
+    const getValue = (elem) => {
+        return elem.value;
     }
     /**
      * @param {HTMLElement} elem 
@@ -215,20 +209,19 @@ zulu:'zu',
         elem.innerText = data.message;
         elem.insertBefore(name,elem.firstChild);
         chatbox.appendChild(elem);
+        if(data.nickname != nickname) {
+            notify(temp);
+        }
     }
 
     socket.on('message_received', (data) => {
         let url = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl='+languages[toLanguage]+'&dt=t&q='+ data.message;
 
         fetch(url)
-        .then(function(response){
+        .then(response => {
             response.json()
-            .then(function(resp){
-                let temp = {'message':resp[0][0][0], 'nickname': data.nickname};
-                setStyle(temp);
-                if(data.nickname != nickname) {
-                    notify(temp);
-                }
+            .then(temp => {
+                setStyle({message: temp[0][0][0], nickname: data.nickname});
             });
         });
         console.log('Received message from:' + data.nickname);
@@ -238,7 +231,7 @@ zulu:'zu',
      */
     const sendMessage = (event) => {  
         if(event.key === 'Enter') {
-            let data = {'message' : getText(), 'nickname' : nickname};
+            let data = {'message' : getValue(chatbox), 'nickname' : nickname};
             if (data.message != '') {
                 messageBox.value = '';
                 socket.emit("user_played", data);
@@ -251,8 +244,8 @@ zulu:'zu',
      */
     const sendNickname = (event) => {
         if(event.key === 'Enter') {
-            nickname = getnickname();
-            toLanguage = getLanguage();  
+            nickname = getValue(nicknameBox);
+            toLanguage = getValue(languageBox);  
             hideElement(nicknameBox);
             hideElement(languageBox);
             showElement(messageBox);
