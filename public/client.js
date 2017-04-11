@@ -163,6 +163,7 @@ zulu:'zu',
     const nicknameBox = document.getElementById('nicknameBox');
     const chatbox = document.getElementById('chatbox');
     const languageBox = document.getElementById('languageBox');
+    const nickDisplay = document.getElementById('nickDisplay');
     
     let toLanguage;
     let nickname;
@@ -249,10 +250,13 @@ zulu:'zu',
             hideElement(nicknameBox);
             hideElement(languageBox);
             showElement(messageBox);
+            nickDisplay.innerText = nickname;
+            showElement(nickDisplay);
         }    
     }
 
     messageBox.addEventListener('keydown', sendMessage);
     hideElement(messageBox);
+    hideElement(nickDisplay);
     languageBox.addEventListener('keydown', sendNickname);
 })();

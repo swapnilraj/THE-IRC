@@ -1,3 +1,7 @@
+*, html {
+    box-sizing: border-box;
+}
+
 body, html {
     padding: 0px;
     height: 100%;
@@ -5,29 +9,37 @@ body, html {
     margin: 0px;
 }
 
-#chatbox {
+#chatBox {
+    display: flex;
+    flex-grow: 2;    
+    flex-direction: column;
+}
+
+#messageDisplay {
     margin: 0 auto;
     padding: 5%; 
-    flex-grow: 20;
+    flex-grow: 1;
     background: #292929;
     font-family: sans-serif;
     overflow: scroll;
     overflow-wrap: break-word;
+    width: 100%;
 }
 
-#chatbox span {
+#messageDisplay span {
     color: #e06eeb;
     margin: 0px;
     -webkit-margin-before:0em;
     -webkit-margin-after:0em;
 }
 
-#chatbox p {
+#messageDisplay p {
     color: #fff;
     margin: 0px;
     -webkit-margin-before:0em;
     -webkit-margin-after:0em;
 }
+
 #messageSender {
     display: flex;
     margin: 0 auto;
@@ -36,8 +48,11 @@ body, html {
 }
 
 #messageBox {
-    margin: auto auto;
-    text-align: center;
+    width: 100%;
+    border: 3px solid #292929;
+    border-left: 0;
+    padding: 0;
+    line-height: 1.5;
 }
 
 #nicknameBox {
@@ -48,6 +63,17 @@ body, html {
 #languageBox {
     margin: auto auto;
     text-align: center;
+}
+
+#nickDisplay {
+    align-self: flex-end;    
+    width: 100%;    
+    margin: 0;
+    padding-right: 2%;    
+    
+    color: #292929;
+    font-family: sans-serif;
+    text-align: right;
 }
 
 /*#e06eeb*/
@@ -69,6 +95,7 @@ body, html {
     }
 
     #messageSender {
+        display: none; 
         width: 100%;
     }
 }
