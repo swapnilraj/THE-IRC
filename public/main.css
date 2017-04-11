@@ -8,9 +8,11 @@ body, html {
 #chatbox {
     margin: 0 auto;
     padding: 5%; 
-    flex-grow: 1;
+    flex-grow: 20;
     background: #292929;
     font-family: sans-serif;
+    overflow: scroll;
+    overflow-wrap: break-word;
 }
 
 #chatbox span {
@@ -29,7 +31,7 @@ body, html {
 #messageSender {
     display: flex;
     margin: 0 auto;
-    flex-grow: 3; 
+    flex-grow: 1; 
     border: 3px solid #292929;
 }
 
