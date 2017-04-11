@@ -215,7 +215,7 @@ zulu:'zu',
         }
     }
 
-    socket.on('message_received', (data) => {
+    const messageReceivedHandler = (data) => {
         let url = 'https://translate.googleapis.com/translate_a/single?client=gtx&sl=en&tl='+languages[toLanguage]+'&dt=t&q='+ data.message;
 
         fetch(url)
@@ -226,13 +226,15 @@ zulu:'zu',
             });
         });
         console.log('Received message from:' + data.nickname);
-    });
+    }
+
+    socket.on('message_received', messageReceivedHandler);
     /**
      * @param {Event} event
      */
     const sendMessage = (event) => {  
         if(event.key === 'Enter') {
-            let data = {'message' : getValue(chatbox), 'nickname' : nickname};
+            let data = {'message' : getValue(messageBox), 'nickname' : nickname};
             if (data.message != '') {
                 messageBox.value = '';
                 socket.emit("user_played", data);
