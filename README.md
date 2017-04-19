@@ -22,4 +22,8 @@ On selecting your nick and your language you can converse with anyone in your pr
 
 Left chose Hindi and right chose French.
 
+## Future Design:
+
+![Image of our design intent](./design/chatroom.png)
+
 Brought to you by Team TCDB4CB.
