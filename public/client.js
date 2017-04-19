@@ -164,26 +164,26 @@ zulu:'zu',
     const chatbox = document.getElementById('messageDisplay');
     const languageBox = document.getElementById('languageBox');
     const nickDisplay = document.getElementById('nickDisplay');
-    
+
     let toLanguage;
     let nickname;
 
     const socket = io.connect('/');
     /**
-     * @param {HTMLElement} elem 
+     * @param {HTMLElement} elem
      */
     const getValue = (elem) => {
         return elem.value;
     }
     /**
-     * @param {HTMLElement} elem 
+     * @param {HTMLElement} elem
      */
     const hideElement = (elem) => {
         elem.style.display = 'none';
     }
 
     /**
-     * @param {HTMLElement} elem 
+     * @param {HTMLElement} elem
      */
     const showElement = (elem) => {
         elem.style.display = '';
@@ -222,7 +222,7 @@ zulu:'zu',
         .then(response => {
             response.json()
             .then(temp => {
-                setStyle({message: temp[0][0][0], nickname: data.nickname});
+                setStyle({message: parseResponse(temp), nickname: data.nickname});
             });
         });
         console.log('Received message from:' + data.nickname);
@@ -232,7 +232,7 @@ zulu:'zu',
     /**
      * @param {Event} event
      */
-    const sendMessage = (event) => {  
+    const sendMessage = (event) => {
         if(event.key === 'Enter') {
             let data = {'message' : getValue(messageBox), 'nickname' : nickname};
             if (data.message != '') {
@@ -248,13 +248,13 @@ zulu:'zu',
     const sendNickname = (event) => {
         if(event.key === 'Enter') {
             nickname = getValue(nicknameBox);
-            toLanguage = getValue(languageBox);  
+            toLanguage = getValue(languageBox);
             hideElement(nicknameBox);
             hideElement(languageBox);
             showElement(messageBox);
             nickDisplay.innerText = nickname;
             showElement(nickDisplay);
-        }    
+        }
     }
 
     messageBox.addEventListener('keydown', sendMessage);
